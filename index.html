@@ -74,9 +74,15 @@
 				<script>
 				    $(document).ready(function(){
 				        $.getJSON("http://azgz.sakura.ne.jp/wordpress/wp-json/posts/",function(data) {
-				            for(var i=0; i < 2; i++) {
-				            	$('.news-list').append('<dt class="news-list--date">'+data[i].date+'</dt>');
-				            	$('.news-list').append('<dd class="news-list--note"><a href="'+data[i].link+'">'+data[i].title+'</a></dd>');
+				            for(var i=0; i < 5; i++) {
+					            var date = new Date(data[i].date);
+					            console.log(date);
+					            yy = date.getFullYear();
+					            mm = date.getMonth() + 1;
+					            dd = date.getDate();
+					            var pubDate = yy +'.'+ mm +'.'+ dd;
+				            	$('.news-list').append('<dt class="news-list--date">' + pubDate + '</dt>');
+				            	$('.news-list').append('<dd class="news-list--note"><a href="' + data[i].link + '">' + data[i].title + '</a></dd>');
 				            }
 				        })
 				    });
