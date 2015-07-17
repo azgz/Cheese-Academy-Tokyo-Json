@@ -71,12 +71,16 @@
         <p class="section-note">お知らせ・更新情報</p>
         <div class="inner">
             <dl class="news-list clearfix">
-                <dt class="news-list--date">2015.04.11</dt>
-                <dd class="news-list--note"><a href="#">初日開講オリエンテーションが行われました！</a></dd>
-                <dt class="news-list--date">2015.04.08</dt>
-                <dd class="news-list--note"><a href="#">主席講師インタービューが更新されました！</a></dd>
-                <dt class="news-list--date">2015.03.21</dt>
-                <dd class="news-list--note"><a href="#">トーキョーチーズFesを開催いたしました！</a></dd>
+				<script>
+				    $(document).ready(function(){
+				        $.getJSON("http://azgz.sakura.ne.jp/wordpress/wp-json/posts/",function(data) {
+				            for(var i=0; i < 2; i++) {
+				            	$('.news-list').append('<dt class="news-list--date">'+data[i].date+'</dt>');
+				            	$('.news-list').append('<dd class="news-list--note"><a href="'+data[i].link+'">'+data[i].title+'</a></dd>');
+				            }
+				        })
+				    });
+				</script>
             </dl>
             <p class="news-note__more"><a href="news.html">ニュース一覧を見る</a></p>
         </div>
